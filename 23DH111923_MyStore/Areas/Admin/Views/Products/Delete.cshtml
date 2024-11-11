@@ -1,0 +1,86 @@
+﻿@model _23DH111923_MyStore.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <style>
+        img {
+            height: 200px;
+            max-width: 200px;
+        }
+    </style>
+    <h2 class="bg-success">XÓA SẢN PHẨM</h2>
+    <h3 class="alert-danger">Bạn có chắc chắn muốn xóa không?</h3>
+    <div class="container-fluid">
+        <div class="col-md-2">
+            <img src="@Html.DisplayFor(model => model.ProductImage)" />
+        </div>
+        <dl class="dl-v">
+            <dt>
+                Tên sản phẩm
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ProductName)
+            </dd>
+    
+            <dt>
+                Mô tả
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ProductDecription)
+            </dd>
+    
+            <dt>
+                Đơn giá
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ProductPrice)
+            </dd>
+    
+            <dt>
+                Hình ảnh
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ProductImage)
+            </dd>
+    
+            <dt>
+                Tên danh mục
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Category.CategoryName)
+            </dd>
+            <dt style="padding: 10px"></dt>
+            <dd style="padding: 10px">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Xóa" class="btn btn-default" />
+                        @Html.ActionLink("Quay lại trang", "Index", null, new { @class = "btn btn-primary" })
+                    </div>
+                }
+            </dd>
+    
+        </dl>
+    
+       
+    </div>
+</body>
+</html>

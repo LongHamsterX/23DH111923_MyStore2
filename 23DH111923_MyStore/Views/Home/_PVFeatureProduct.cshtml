@@ -1,0 +1,61 @@
+﻿@model _23DH111923_MyStore.Models.ViewModel.HomeProductVM
+
+@*<section id="featureProd">
+    <h2>Sản phẩm nổi bật</h2>
+    <div class="prod-container">
+        <div class="product-item">
+            <img src="~/Content/Images/Ipad.png" />
+            <h3>Apple iPad Air 6 M2 11-Inch Wi-Fi</h3>
+            <p class="prodDescription">Cao cấp, tinh tế, chất lượng</p>
+            <p class="prodPrice">16290000đ</p>
+        </div>
+        <div class="product-item">
+            <img src="~/Content/Images/Ipad2.png" />
+            <h3>Galaxy Tab A9 Wifi</h3>
+            <p class="prodDescription">Mỏng nhẹ, chất lượng, giá cả cho sinh viên</p>
+            <p class="prodPrice">3500000đ</p>
+        </div>
+        <div class="product-item">
+            <img src="~/Content/Images/Ipad3.png" />
+            <h3>Ipad Apple iPad 10.9-inch (10th Gen) Wi-Fi, 2022</h3>
+            <p class="prodDescription">Đẳng cấp, thời thượng, thanh lịch</p>
+            <p class="prodPrice">9490000đ</p>
+        </div>
+    </div>
+</section>*@
+
+<link rel="stylesheet" type="text/css" href="~/Content/myStyle/CustomerHome.css"/>
+<div class="bg">
+@if (Model.FeaturedProducts != null && Model.FeaturedProducts.Any())
+            {
+                <section class="container-fluid featureProd">
+                    <h2 style="color: red" class="boldtext">Sản phẩm nổi bật</h2>
+                    <div class="feature-container">
+                        @foreach (var product in Model.FeaturedProducts)
+                {
+                    <div class="fproduct-item" style="background-color: whitesmoke";>
+                        <div>
+                            <a href="@Url.Action("ProductDetails", "Home", new { id = product.ProductID})">
+                                <img src="@Html.DisplayFor(modelItem => product.ProductImage)"/>
+                            </a>
+                        </div>
+                        <div>
+                            <p class="prodPrice">
+                                @Html.DisplayFor(modelItem => product.ProductPrice)
+                            </p>
+                            <p class="prodName">
+                                @Html.DisplayFor(modelItem => product.ProductName)
+                            </p>
+                            <p class="prodCate">
+                                @Html.DisplayFor(modelItem => product.Category.CategoryName)
+                            </p>
+                            <p class="prodSale">
+                                Đã bán:&nbsp; @Html.DisplayFor(modelItem => product.OrderDetail.Count)
+                            </p>
+                        </div>
+                    </div>
+                }
+                    </div>
+                </section>
+            }
+</div>

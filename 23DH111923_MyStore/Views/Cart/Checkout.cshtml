@@ -1,0 +1,74 @@
+﻿@model _23DH111923_MyStore.Models.ViewModel.CheckoutVM
+
+@{
+    ViewBag.Title = "Đặt hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    // Hàm kích hoạt chỉnh sửa địa chỉ giao hàng
+    function enableAddressEdit() {
+        document.getElementById("shippingAddress").removeAttribute("readonly");
+        document.getElementById("newAddressGroup").style.display = "block";
+    }
+
+    // Hàm cập nhật địa chỉ giao hàng
+    function updateShippingAddress() {
+        var newAddress = document.getElementById("newShippingAddress").value;
+        if (newAddress) {
+            document.getElementById("shippingAddress").value = newAddress;
+        }
+    }
+</script>
+
+<h2>Đặt hàng</h2>
+
+@using (Html.BeginForm("Checkout", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th colspan="2">Sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.CartItem != null)
+                {
+                    foreach (var item in Model.CartItem)
+                    {
+                        <tr>
+                            <td><img src="@item.ProductName" /></td>
+                            <td>@item.ProductName</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.UnitPrice</td>
+                            <td>@item.TotalPrice</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5" style="text-align: center">Giỏ hàng trống</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+<h3>Thông tin giao hàng</h3>
+
+<div class="form-group">
+    @Html.LabelFor(n => n.ShippingAddress, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.TextBoxFor(n => n.ShippingAddress, new { @class = "form-control", @readonly = "readonly", @id = "shippingAddress" })
+        @Html.ValidationMessageFor(n => n.ShippingAddress)
+        <button type="button" class="btn btn-link" onclick="enableAddressEdit()">Chỉnh sửa</button>
+    </div>
+</div>

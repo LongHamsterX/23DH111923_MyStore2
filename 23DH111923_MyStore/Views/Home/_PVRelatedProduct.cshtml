@@ -1,0 +1,27 @@
+﻿@model _23DH111923_MyStore.Models.ViewModel.ProductDetailsVM
+
+<section class="container">
+    <h2>Sản phẩm liên quan</h2>
+    <div class="row">
+        @if (Model.RelatedProducts != null && Model.RelatedProducts.Any())
+        {
+            foreach (var product in Model.RelatedProducts)
+            {
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="@Html.DisplayFor(modelItem => product.ProductImage)" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => product.ProductName)</h5>
+                            <p class="card-text">@Html.DisplayFor(modelItem => product.ProductPrice)</p>
+                            <a href="@Url.Action("ProductDetails", "Home", new { id = product.ProductID })" class="btn btn-primary">Chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>Không có sản phẩm liên quan.</p>
+        }
+    </div>
+</section>

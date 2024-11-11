@@ -18,7 +18,7 @@ namespace _23DH111923_MyStore.Areas.Admin.Controllers
         //GET: lấy dữ liệu từ bảng Categories trong database để hiển thị lên
         public ActionResult Index()
         {
-            return View(db.Categories.ToList());
+            return View(db.Category.ToList());
         }
 
         // GET: Admin/Categories/Details/5
@@ -29,7 +29,7 @@ namespace _23DH111923_MyStore.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest); //mã lỗi 400: thiếu giá trị truyền vào
             }
-            Category category = db.Categories.Find(id);
+            Category category = db.Category.Find(id);
             if (category == null) //không tìm thấy bản ghi
             {
                 return HttpNotFound(); //mã lỗi 404
@@ -54,7 +54,7 @@ namespace _23DH111923_MyStore.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Categories.Add(category);
+                db.Category.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -70,7 +70,7 @@ namespace _23DH111923_MyStore.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
+            Category category = db.Category.Find(id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -101,7 +101,7 @@ namespace _23DH111923_MyStore.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
+            Category category = db.Category.Find(id);
             if (category == null)
             {
                 return HttpNotFound();
@@ -114,8 +114,8 @@ namespace _23DH111923_MyStore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category category = db.Categories.Find(id);
-            db.Categories.Remove(category);
+            Category category = db.Category.Find(id);
+            db.Category.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

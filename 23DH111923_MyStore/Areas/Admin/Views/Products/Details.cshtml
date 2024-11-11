@@ -1,0 +1,88 @@
+﻿@model _23DH111923_MyStore.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <style>
+        img {
+            height: 200px;
+            max-width: 200px;
+        }
+        .buttons {
+            margin: auto;
+            width: 210px;
+            padding: 10px;
+        }
+    </style>
+    <div class="container-fluid">
+        <h2 class="bg-success">CHI TIẾT SẢN PHẨM</h2>
+        <hr />
+    </div>
+    <div class="container-fluid">
+        <div class="col-md-2">
+            <img src="@Html.DisplayFor(model => model.ProductImage)" />
+        </div>
+        <div class="col-md-10">
+            <dl class="dl-v">
+                <dt>
+                    Tên sản phẩm:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ProductName)
+                </dd>
+
+                <dt>
+                    Mô tả:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ProductDecription)
+                </dd>
+
+                <dt>
+                    Đơn giá:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ProductPrice)
+                </dd>
+
+                <dt>
+                    Hình ảnh:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ProductImage)
+                </dd>
+
+                <dt>
+                    Danh mục:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Category.CategoryName)
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+
+    <dt class="buttons col-md-12"></dt>
+    <dd>
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.ProductID }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Quay lại trang", "Index", null, new { @class = "btn btn-primary" })
+    </dd>
+</body>
+</html>

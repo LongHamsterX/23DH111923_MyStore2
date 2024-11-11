@@ -20,10 +20,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Trang chủ", "Index", "Home")</li>
                     <li>@Html.ActionLink("Danh mục", "Index", "Categories")</li>
                     <li>@Html.ActionLink("Sản phẩm", "Index", "Products")</li>
-                    <li>@Html.ActionLink("Khách hàng", "Index", "Customers")</li>
+                    <li>@Html.ActionLink("Khách hàng", "Index", "../Home/Index")</li>
                     <li>@Html.ActionLink("Đơn hàng", "Index", "Orders")</li>
                     <li>@Html.ActionLink("Tài khoản", "Index", "Users")</li>
                 </ul>
@@ -34,9 +34,9 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Tên ứng dụng</p>
-            <h4>Contact</h4>
-            <p>Tên các thành viên trong nhóm</p>
+            <p>&copy; @DateTime.Now.Year - WEB BÁN HÀNG</p>
+            <h3>Contact</h3>
+            <p>Facebook: <a href="https://www.facebook.com/long.thosan05/">Trần Long</a></p>
         </footer>
     </div>
 
